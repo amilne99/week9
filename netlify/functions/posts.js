@@ -41,7 +41,7 @@ exports.handler = async function(event) {
     }
 
     // get the comments for this post, wait for it to return, store in memory
-    let commentsQuery = await db.collection(`comments`).where(`postId`, `==`, postId).get()
+    let commentsQuery = await db.collection(`comments`).where(`postId`, `==`, postId).orderBy(`created`, `asc`).get()
 
     // get the documents from the query
     let comments = commentsQuery.docs
